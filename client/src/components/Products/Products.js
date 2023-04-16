@@ -25,7 +25,7 @@ function Products() {
 
 
   return (
-    <Box sx={{ bgcolor: '#F6F3F3', mt: '5rem', pl: '1rem', pt: '6rem', pb: '2rem' }}>
+    <Box sx={{ bgcolor: '#F6F3F3', mt: '25rem', pl: '1rem', pt: '6rem', pb: '2rem' }}>
       {veg &&
         <Box >
           <Typography className='boxitems'>Special pickles</Typography>

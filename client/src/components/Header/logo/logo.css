@@ -6,5 +6,11 @@
 .logo-align {
     width:12rem;
     height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 } 
-
+.text{
+    font-size: 5rem;
+    font-weight: 400;   
+}

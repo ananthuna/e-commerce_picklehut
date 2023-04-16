@@ -12,11 +12,11 @@ const fileUpload = require('express-fileupload')
 const fs = require('fs')
 
 
-// app.use(cors({
-//     origin: 'http://localhost:3000',
-//     credentials: true,
-// }));
-app.use(express.static('./build'));
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+}));
+// app.use(express.static('./build'));
 app.use(express.static(path.resolve('./public')));
 
 app.use(fileUpload());
