@@ -16,13 +16,13 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
 }));
-// app.use(express.static('./build'));
+app.use(express.static('./build'));
 app.use(express.static(path.resolve('./public')));
 
 app.use(fileUpload());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-const PORT = 3000
+const PORT = process.env.PORT || 4000
 
 app.use('/api/user', userRouter)
 app.use('/api/item', itemRouter)
