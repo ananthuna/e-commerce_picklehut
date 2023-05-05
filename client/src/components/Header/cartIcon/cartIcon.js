@@ -46,8 +46,22 @@ function cartIcon() {
     return (
         <Box>
             <IconButton onClick={() => navigate('/cart')}>
-                <Badge badgeContent={items && items.length} color='success'>
-                    <LocalMallOutlinedIcon sx={{ fontSize: 30 }} color="action" />
+                <Badge badgeContent={items && items.length}
+                    sx={{
+                        color: 'black',
+                        "& .MuiBadge-badge": {
+                            backgroundColor: "yellow"
+                        }
+                    }}>
+                    <LocalMallOutlinedIcon
+                        sx={{
+                            fontSize: 30,
+                            color: 'white',
+                            "&:hover": {
+                                color: 'yellow',
+                                cursor: "pointer"
+                            }
+                        }} />
                 </Badge>
             </IconButton>
         </Box>

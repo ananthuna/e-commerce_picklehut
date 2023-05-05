@@ -3,16 +3,18 @@ import React from 'react'
 import Header from '../components/Header/header'
 import Footer from '../components/Footer/footer'
 import ViewProduct from '../components/View/view'
+import SubHeader from '../components/SubHeader/SubHeader'
 
 
 function View() {
-    
+
 
     return (
         <Box>
             <Header />
-            <ViewProduct/>
-            <Footer/>
+            <SubHeader />
+            <ViewProduct />
+            <Footer />
         </Box>
     )
 }

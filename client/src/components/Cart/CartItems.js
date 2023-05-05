@@ -27,20 +27,22 @@ function CartItems() {
             }
         }
 
-        axios.get(`${baseUrl}/api/cart/cartitems`, customConfig)
-            .then((res) => {
-                setCart(true)
-                setCartitems(res.data)
+        if (user.token) {
+            axios.get(`${baseUrl}/api/cart/cartitems`, customConfig)
+                .then((res) => {
+                    setCart(true)
+                    setCartitems(res.data)
 
-            })
+                })
 
 
-        axios.get(`${baseUrl}/api/user/address`, customConfig)
-            .then((res) => {
-                setAddress(res.data.address[0])
-                setName(res.data.firstName)
-                setNumber(res.data.number)
-            })
+            axios.get(`${baseUrl}/api/user/address`, customConfig)
+                .then((res) => {
+                    setAddress(res.data.address[0])
+                    setName(res.data.firstName)
+                    setNumber(res.data.number)
+                })
+        }
 
     }, [])
 
@@ -53,7 +55,7 @@ function CartItems() {
         //     navigate('/account')
         //     return
         // }
-        if (cartitems==='empty cart'){
+        if (cartitems === 'empty cart') {
             alert('cart is empty.continue purchase?')
             return navigate('/')
         }

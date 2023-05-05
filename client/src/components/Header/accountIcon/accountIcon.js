@@ -101,7 +101,15 @@ function accountIcon() {
                     variant="contained"
                     onClick={handleClick}
                 >
-                    <PermIdentityIcon sx={{ fontSize: 30 }} />
+                    <PermIdentityIcon
+                        sx={{
+                            fontSize: 30,
+                            color: 'white',
+                            "&:hover": {
+                                color: 'yellow',
+                                cursor: "pointer",
+                            }
+                        }} />
                 </IconButton>
             </Box>
 

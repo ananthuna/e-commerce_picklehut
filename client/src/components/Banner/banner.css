@@ -1,6 +1,6 @@
 .banner {
     position: relative;
-    top: 90px;
+    /* top: 90px; */
     z-index: 1;
     width: 100%;
     height: 12.5rem;

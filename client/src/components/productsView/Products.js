@@ -63,7 +63,7 @@ function Products({ tab, items }) {
 
 
     return (
-        <Box sx={{ flexGrow: 1, bgcolor: '#F6F3F3' }}>
+        <Box sx={{ flexGrow: 1, bgcolor: '#415e6b' }}>
             <Grid container spacing={2} sx={{ pl: '2rem', bgcolor: '#F6F3F3' }}>
                 {items.map((item, index) =>
                     <Grid item xs={6} md={2} key={item._id} >

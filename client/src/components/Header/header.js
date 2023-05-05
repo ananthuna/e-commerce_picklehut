@@ -10,21 +10,73 @@ import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Adminicon from './adminicon/AdminIcon';
 import { UserContext } from '../../Context/Context';
+import axios from 'axios';
+import { baseUrl } from '../../url';
+import HeadsetIcon from '@mui/icons-material/Headset';
 
 
 export default function PrimarySearchAppBar() {
     const { user, setUser } = React.useContext(UserContext)
     const navigate = useNavigate()
+    // const [open, setOpen] = React.useState(false)
+
+    const loginData = {
+        email: 'kashi@gmail.com',
+        password: 'Kashi@123',
+        token: ''
+    }
+    const Data = JSON.stringify(loginData);
+    const customConfig = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
     React.useEffect(() => {
-        let User = localStorage.getItem("user");
-        setUser(JSON.parse(User))
+        let User = JSON.parse(localStorage.getItem("user"))
+        setUser(User)
+
+        if (!User) {
+            axios.post(`${baseUrl}/api/user/login`, Data, customConfig).then((response) => {
+                if (!response.data.err) {
+                    localStorage.setItem("user", JSON.stringify(response.data));
+                } else {
+                    console.log('header login err');
+                    console.log(response.data.err);
+                }
+            })
+        }
 
     }, [])
+
+    // const handleScroll = () => {
+    //     console.log('position');
+    //     console.log(window.pageYOffset);
+    //     if (window.pageYOffset > 499) {
+    //         setOpen(true)
+    //     } else {
+    //         setOpen(false)
+    //     }
+    // }
+
+    // React.useEffect(() => {
+    //     window.addEventListener('scroll', handleScroll, { passive: true });
+
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
+
+
 
 
 
     return (
-        <Box className='header'>
+        <Box className='header'
+            sx={{
+                backgroundColor: "#1c2a5e",
+            }}
+        >
             <Box sx={{
                 position: 'relative',
                 width: '12rem',
@@ -33,10 +85,35 @@ export default function PrimarySearchAppBar() {
             }}>
                 <Logo />
             </Box>
-            <Box>
+            <Box sx={{
+                bgcolor: 'white',
+                borderRadius: 1
+            }}>
                 <SearchBar />
             </Box>
-            <Box >
+            <Box sx={{
+                display: 'flex',
+                gap: 4
+            }}>
+                <Box sx={{
+                    color: 'white',
+                    display: 'flex',
+                    "&:hover": {
+                        cursor: "pointer",
+                    }
+                }}>
+                    <HeadsetIcon sx={{
+                        fontSize: 50
+                    }} />
+                    <Box >
+                        <Typography sx={{
+                            "&:hover": {
+                                color: 'yellow',
+                            }
+                        }}>(+91)7012031852</Typography>
+                        <Typography>Call us now</Typography>
+                    </Box>
+                </Box>
                 {user ? (
                     <Box className='right-items'>
                         {user.isAdmin ? (
@@ -48,7 +125,7 @@ export default function PrimarySearchAppBar() {
                         ) : (
                             <Box sx={{
                                 display: 'flex',
-                                gap:'10px'
+                                gap: '10px'
                             }}>
                                 {/* <IconButton> */}
                                 <Cart />
@@ -63,8 +140,8 @@ export default function PrimarySearchAppBar() {
                 ) : (
                     <Box className='right-items'>
                         <Typography className='selection' onClick={() => navigate('/login')}>Login</Typography>
-                        <Typography>/</Typography>
-                        <Typography className='selection' onClick={() => navigate('/signup')}>Signup</Typography>
+                        <Typography color='white' >/</Typography>
+                        <Typography className='selection' color='white' onClick={() => navigate('/signup')}>Signup</Typography>
                     </Box>
                 )
                 }
