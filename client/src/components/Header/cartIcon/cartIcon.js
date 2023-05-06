@@ -6,6 +6,7 @@ import { Badge, IconButton } from '@mui/material';
 import { UserContext } from '../../../Context/Context';
 import axios from 'axios';
 import { baseUrl } from '../../../url'
+import './cartIcon.css'
 
 function cartIcon() {
     const navigate = useNavigate()
@@ -20,32 +21,28 @@ function cartIcon() {
                 'Authorization': `Bearer ${user.token}`
             }
         }
-        // console.log('cart-api');
         axios.get(`${baseUrl}/api/cart/cartitems`, customConfig)
             .then((res) => {
                 setItems(res.data.items)
                 setCartitems(res.data)
-                // console.log(cartitems);
             }).catch((err) => {
-                // console.log("error:" + err.response.statusText);
                 if (err.response.statusText === 'Unauthorized') {
                     localStorage.clear()
                     navigate('/')
                 }
             })
 
-    }, [])
+    })
 
     useEffect(() => {
         setItems(cartitems.items)
-        // console.log('items'+cartitems);
     }, [cartitems])
 
 
 
     return (
         <Box>
-            <IconButton onClick={() => navigate('/cart')}>
+            <IconButton className='iconButton' onClick={() => navigate('/cart')}>
                 <Badge badgeContent={items && items.length}
                     sx={{
                         color: 'black',
@@ -53,14 +50,14 @@ function cartIcon() {
                             backgroundColor: "yellow"
                         }
                     }}>
-                    <LocalMallOutlinedIcon
+                    <LocalMallOutlinedIcon className='cartIcon'
                         sx={{
                             fontSize: 30,
                             color: 'white',
-                            "&:hover": {
-                                color: 'yellow',
-                                cursor: "pointer"
-                            }
+                            // "&:hover": {
+                            //     color: 'yellow',
+                            //     cursor: "pointer"
+                            // }
                         }} />
                 </Badge>
             </IconButton>

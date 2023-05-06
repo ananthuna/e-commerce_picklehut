@@ -3,7 +3,7 @@ import React from 'react'
 import Header from '../components/Header/header'
 import Footer from '../components/Footer/footer'
 import ViewProduct from '../components/View/view'
-import SubHeader from '../components/SubHeader/SubHeader'
+// import SubHeader from '../components/SubHeader/SubHeader'
 
 
 function View() {
@@ -12,7 +12,7 @@ function View() {
     return (
         <Box>
             <Header />
-            <SubHeader />
+            {/* <SubHeader /> */}
             <ViewProduct />
             <Footer />
         </Box>

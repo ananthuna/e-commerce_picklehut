@@ -13,6 +13,7 @@ import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { UserContext } from '../../../Context/Context';
 import axios from 'axios';
 import { baseUrl } from '../../../url';
+import './accIcon.css'
 
 
 const StyledMenu = styled((props) => (
@@ -94,6 +95,7 @@ function accountIcon() {
         <Box>
             <Box>
                 <IconButton
+                className='iconButton'
                     id="demo-customized-button"
                     aria-controls={open ? 'demo-customized-menu' : undefined}
                     aria-haspopup="true"
@@ -101,14 +103,14 @@ function accountIcon() {
                     variant="contained"
                     onClick={handleClick}
                 >
-                    <PermIdentityIcon
+                    <PermIdentityIcon className='accIcon'
                         sx={{
                             fontSize: 30,
                             color: 'white',
-                            "&:hover": {
-                                color: 'yellow',
-                                cursor: "pointer",
-                            }
+                            // "&:hover": {
+                            //     color: 'yellow',
+                            //     cursor: "pointer",
+                            // }
                         }} />
                 </IconButton>
             </Box>
